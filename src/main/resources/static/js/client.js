@@ -4,6 +4,10 @@ function Ticket(data) {
     this.reporter = ko.observable(data.reporter);
     this.priority = ko.observable(data.priority);
     this.dateReported = ko.observable(data.dateReported);
+
+    this.formattedDateReported = ko.computed(function(){
+        return new Date(this.dateReported()).toLocaleString('en-us');
+    }, this);
 }
 
 let ticketViewModel;

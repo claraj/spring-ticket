@@ -1,4 +1,4 @@
-// Talk to the server. JS fetch method, built-into modern browsers.
+// Talk to the server. JS fetch method, built-into modern browsers. Sorry IE.
 
 function getAllTickets() {
     fetch('/ticketsPriority')
@@ -15,8 +15,7 @@ function getAllTickets() {
                     reporter: t.reporter,
                     priority: t.priority,
                     dateReported: t.dateReported
-                }
-            )
+                });
         });
 
         return tickets;
