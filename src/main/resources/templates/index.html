@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tickets</title>
+
+
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+    <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+    <script src="js/apiClient.js"></script>
+    <script src="js/client.js"></script>
+
+
+</head>
+<body>
+
+
+<h1>Tickets</h1>
+
+<form id="new-ticket-form">
+
+    <label for="description-field">Description</label>
+    <input type="text" placeholder="description" id="description-field">
+
+    <label for="reporter-field">Reporter</label>
+    <input type="text" placeholder="description" id="reporter-field">
+
+    <label for="priority-field">Priority</label>
+    <select id="priority-field">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+
+    <button id="new-ticket-button" data-bind="click: createNewTicket"></button>
+</form>
+
+
+<table>
+    <thead><tr>
+        <th>Description</th><th>Reporter</th><th>Priority</th><th>Date Reported</th>
+    </tr></thead>
+
+
+    <tbody data-bind="foreach: tickets">
+    <tr>
+        <td data-bind="text: description"></td>
+        <td data-bind="text: reporter"></td>
+        <td data-bind="text: "></td>
+        <td data-bind="text: dateReported"></td>
+    </tr>
+    </tbody>
+
+
+</table>
+
+</body>
+</html>
