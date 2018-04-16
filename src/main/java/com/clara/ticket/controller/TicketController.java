@@ -9,7 +9,7 @@ public class TicketController {
     
     @RequestMapping("/")
     public String home() {
-        return "index.html";
+        return "html/index.html";
     }
     
 }
