@@ -43,9 +43,9 @@ document.addEventListener("DOMContentLoaded", function(){
         self.updated = function() {
 
             // Clear the form
-            self.newTicketReporter = "";
-            self.newTicketDescription = "";
-            self.newTicketPriority = "1";
+            self.newTicketReporter("");
+            self.newTicketDescription("");
+            self.newTicketPriority("1");
 
             // Request list of tickets from server
             self.loadAllTickets()
