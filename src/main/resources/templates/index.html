@@ -20,16 +20,18 @@
 
 <h1>Tickets</h1>
 
+<h2>Add new ticket</h2>
+
 <form id="new-ticket-form">
 
     <label for="description-field">Description</label>
-    <input type="text" placeholder="description" id="description-field">
+    <input data-bind="value: newTicketDescription" type="text" placeholder="description" id="description-field">
 
     <label for="reporter-field">Reporter</label>
-    <input type="text" placeholder="description" id="reporter-field">
+    <input data-bind="value: newTicketReporter" type="text" placeholder="reporter" id="reporter-field">
 
     <label for="priority-field">Priority</label>
-    <select id="priority-field">
+    <select data-bind="value: newTicketPriority" id="priority-field">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -37,27 +39,29 @@
         <option value="5">5</option>
     </select>
 
-    <button id="new-ticket-button" data-bind="click: createNewTicket"></button>
+    <button id="new-ticket-button" data-bind="click: createNewTicket">Submit new ticket</button>
 </form>
+
+<h2>All open tickets</h2>
 
 
 <table>
     <thead><tr>
-        <th>Description</th><th>Reporter</th><th>Priority</th><th>Date Reported</th>
+        <th>ID</th><th>Description</th><th>Reporter</th><th>Priority</th><th>Date Reported</th>
     </tr></thead>
-
 
     <tbody data-bind="foreach: tickets">
     <tr>
+        <td data-bind="text: id"></td>
         <td data-bind="text: description"></td>
         <td data-bind="text: reporter"></td>
-        <td data-bind="text: "></td>
+        <td data-bind="text: priority"></td>
         <td data-bind="text: dateReported"></td>
     </tr>
     </tbody>
 
-
 </table>
+
 
 </body>
 </html>

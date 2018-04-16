@@ -1,41 +1,44 @@
-
+// Talk to the server. JS fetch method, built-into modern browsers.
 
 function getAllTickets() {
-    fetch('/tickets')
+    fetch('/ticketsPriority')
         .then( response => {
-            console.log(response);
             return response.json();
-        }).then( ticketJSON => {
 
-            console.log(ticketJSON);
-            let tickets = ticketJSON.map( t => {
-                return new Ticket(
-                    {
-                        id: t.id,
-                description: t.description,
-                reporter: t.reporter,
-                priority: t.priority,
-                dateReported: t.dateReported
-                    }
-                )
-            });
+        }).then( ticketsJSON => {
 
-            return tickets;
+        let tickets = ticketsJSON.map( t => {
+            return new Ticket(
+                {
+                    id: t.id,
+                    description: t.description,
+                    reporter: t.reporter,
+                    priority: t.priority,
+                    dateReported: t.dateReported
+                }
+            )
+        });
+
+        return tickets;
+
     }).then( tickets => {
         ticketViewModel.setTickets(tickets);
     });
 }
+
 
 function addNewTicket(ticket) {
 
     fetch('tickets',{
         body: JSON.stringify(ticket),
         headers: {
-            'content-type': 'application/json'
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
         },
         method: 'POST'
-    }).then( json => {
-        console.log(json);
-    })
+    }).then( () => {
+            ticketViewModel.updated();
+        }
+    )
 
 }

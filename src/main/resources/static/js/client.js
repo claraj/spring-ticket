@@ -6,39 +6,56 @@ function Ticket(data) {
     this.dateReported = ko.observable(data.dateReported);
 }
 
+let ticketViewModel;
 
-function TicketViewModel(){
+document.addEventListener("DOMContentLoaded", function(){
 
-    let self = this;
+    function TicketViewModel(){
 
-    self.tickets = ko.observableArray([]);
+        let self = this;
 
-    self.newTicketDescription = ko.observable();
-    self.newTicketReporter = ko.observable();
-    self.newTicketPriority = ko.observable();
+        self.tickets = ko.observableArray([]);
 
-    self.createNewTicket = function() {
-        let data = ko.toJSON( {
-            description: self.newTicketDescription(),
-            reporter: self.newTicketReporter(),
-            priority: self.newTicketPriority()
-        });
+        self.newTicketDescription = ko.observable();
+        self.newTicketReporter = ko.observable();
+        self.newTicketPriority = ko.observable();
 
-        addNewTicket(data);
-    };
+        self.createNewTicket = function() {
+            let data = {
+                description: self.newTicketDescription(),
+                reporter: self.newTicketReporter(),
+                priority: self.newTicketPriority()
+            };
 
-    self.loadAllTickets = function() {
-      getAllTickets();
-    };
+            addNewTicket(data);
+        };
+
+        self.loadAllTickets = function() {
+            getAllTickets();
+        };
 
 
-    self.setTickets = function(tickets) {
-        self.tickets(tickets);
-    };
+        self.setTickets = function(tickets) {
+            self.tickets(tickets);
+        };
 
-    self.loadAllTickets();
 
-}
+        self.updated = function() {
 
-let ticketViewModel = new TicketViewModel();
-ko.applyBindings(ticketViewModel);
+            // Clear the form
+            self.newTicketReporter = "";
+            self.newTicketDescription = "";
+            self.newTicketPriority = "1";
+
+            // Request list of tickets from server
+            self.loadAllTickets()
+        }
+
+        self.loadAllTickets();
+
+    }
+
+    ticketViewModel = new TicketViewModel();
+    ko.applyBindings(ticketViewModel);
+
+});

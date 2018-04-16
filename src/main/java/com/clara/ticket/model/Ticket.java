@@ -12,9 +12,6 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
-/**
- * Created by clara on 4/12/18.
- */
 
 @Data
 @Entity
@@ -35,13 +32,14 @@ public class Ticket {
     @NotNull
     private String description;
     
-    @NotNull
     private Date dateReported = new Date();
     
-    @NotNull
     private boolean resolved = false;
     
     private Date dateResolved;
     private String resolution;
+    
+    // Zero-argument constructor required
+    Ticket() {}
     
 }

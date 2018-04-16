@@ -8,9 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-/**
- * Created by clara on 4/16/18.
- */
 
 @RestController
 public class TicketAPIController {
@@ -22,7 +19,7 @@ public class TicketAPIController {
         this.repository = repository;
     }
     
-    @GetMapping("/ticket")
+    @GetMapping("/ticketsPriority")
     ResponseEntity getUnresolvedOrderByPriority() {
         return new ResponseEntity<>(
                 repository.findTicketByResolvedOrderByPriorityAsc(false),

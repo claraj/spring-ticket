@@ -6,11 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-
-/**
- * Created by clara on 4/12/18.
- */
-
 @Repository
 public interface TicketRepository extends PagingAndSortingRepository<Ticket, Long> {
 

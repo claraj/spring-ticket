@@ -7,6 +7,8 @@
 
 
 
+insert into PUBLIC.TICKET (PRIORITY, REPORTER, DESCRIPTION, DATEREPORTED) VALUES ( 5, 'Me', 'mouse mat missing', '2018-09-09');
+
 
 insert into PUBLIC.TICKET (PRIORITY, REPORTER, DESCRIPTION) VALUES ( 5, 'Me', 'mouse mat missing');
 insert into PUBLIC.TICKET (PRIORITY, REPORTER, DESCRIPTION) VALUES ( 4, 'Earwig', 'word is weird');
